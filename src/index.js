@@ -5,11 +5,13 @@ module.exports = function zeros(expression) {
   let arr_num1=[];
   let arr_num2=[];
   let count=0;
+  let even=0;
+  let odd=0;
 
   console.log(arr);
   // arr_num=arr.match(/\d+\*/g);
   // console.log(arr_num);
-
+  
     if(arr.indexOf('!')!=-1){
       arr_num1=arr.match(/\d+!/g);
         for(let j=0; j<arr_num1.length; j++){
@@ -28,22 +30,43 @@ module.exports = function zeros(expression) {
       arr_num2=arr.split('*');
       for(let i=0; i<arr_num2.length;i++){
         arr_num2[i]=+arr_num2[i];
-        let sum=0;
-        for(let m=0; m<arr_num2.length;m++){
-          sum+=arr_num2[m];
+        if(arr_num2[i]%2==0){
+          even+=1;
         }
-        if(arr_num2[i]%2==0 && arr_num2[i]>10){
-          let k=10;
-            count+=Math.floor(arr_num2[i]/k);
-        }
-        if(arr_num2[i]==10){
-          let k=5;
-            count+=Math.floor(arr_num2[i]/k);  
+        else{
+          odd+=1;
         }
       }
-    }
+      for(let j=0;j<arr_num2.length;j++){
+        if(odd==0 && arr_num2[j]>10){
+          let k=10;
+            count+=Math.floor(arr_num2[j]/k);
+        }
+        if(odd==0 && arr_num2[j]==10){
+          let k=10;
+            count+=Math.floor(arr_num2[j]/k);  
+        }
+        if(even>0 && odd>0){
+          if(arr_num2[j]%2!=0){
+            let k=5;
+            while(arr_num2[j]>=k){
+              count+=Math.floor(arr_num2[j]/k);
+              k*=5;  
+            }
+            count-=Math.floor(arr_num2[j]/10);
+          }
+          else{
+            let k=10;
+            count+=Math.floor(arr_num2[j]/k);
+          } 
+        }
+      }
+
+  }
+    
     console.log(arr_num2);
     console.log(count);
+    console.log(even,odd);
 
 
 
