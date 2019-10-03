@@ -40,11 +40,13 @@ module.exports = function zeros(expression) {
       for(let j=0;j<arr_num2.length;j++){
         if(odd==0 && arr_num2[j]>10){
           let k=10;
-            count+=Math.floor(arr_num2[j]/k);
+          count+=Math.floor(arr_num2[j]/k);  
+          count+=Math.floor(arr_num2[j]/50);        
         }
+        
         if(odd==0 && arr_num2[j]==10){
           let k=10;
-            count+=Math.floor(arr_num2[j]/k);  
+          count+=Math.floor(arr_num2[j]/k);  
         }
         if(even>0 && odd>0){
           if(arr_num2[j]%2!=0){
