@@ -37,20 +37,40 @@ module.exports = function zeros(expression) {
           }
           //если и четные, и не четные
           if(even>0 && odd>0){
-            let k=5;
-            while(factorial2[i]>=k){
-              count+=Math.floor(factorial2[i]/k);
-              k*=5;
+            if(factorial2[i]%2==0){
+              let m=2;
+              while(factorial2[i]>m){
+                count2+=Math.floor(factorial2[i]/m);
+                m*=2;
+              }
             }
-            let m=10;
-            while(factorial2[i]>=m){
-              count-=Math.floor(factorial2[i]/m);
-              m*=5;
+            if(factorial2[i]%2==0){
+              count5+=Math.floor(factorial2[i]/10);
+              count5+=Math.floor(factorial2[i]/50);
             }  
-          } 
+          
+            if(factorial2[i]%2!=0){
+              let l=5;
+              while(factorial2[i]>=l){
+                count5+=Math.floor(factorial2[i]/l);
+                l*=5;
+              }
+              count5-=Math.floor(factorial2[i]/10);
+              count5-=Math.floor(factorial2[i]/50);
+            }  
+            
+            } 
+          }
+            if(count2>count5){
+              count+=count5;
+            } 
+            
+            if(count2<=count5 && count2==0){
+            count+=count5;
+            }     
+           
         }
-        console.log(count);
-      }
+       
 
     //если есть и двойные и одичные
       if(factorial2.indexOf('!')!=-1){
